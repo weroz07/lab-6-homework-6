@@ -1,36 +1,37 @@
-
-//6 3
+//6 3 20var
 #define _CRT_SECURE_NO_DEPRECATE
-#include <stdio.h>
 #include <locale.h>
+#include <stdio.h>
 
 int main() {
     setlocale(LC_CTYPE, "RUS");
-    int chas, min;
-    double chas_ugol, min_ugol, raz, otvet;
+    int h, m;
+    double ugol_chas, ugol_min;
+    double raz, res;
 
-    printf("Введи часы: ");
-    scanf("%d", &chas);
+    printf("Р§Р°СЃС‹ (0-12): ");
+    scanf("%d", &h);
 
-    printf("Введи минуты: ");
-    scanf("%d", &min);
+    printf("РњРёРЅСѓС‚С‹ (0-59): ");
+    scanf("%d", &m);
 
-    // Вычисляем углы
-    chas_ugol = chas * 30 + min * 0.5;
-    min_ugol = min * 6;
+    ugol_chas = h * 30 + m * 0.5;
 
-    // Находим разницу
-    raz = min_ugol - chas_ugol;
+    ugol_min = m * 6;
 
-    // Если минутная стрелка "позади" часовой
+    // Р Р°Р·РЅРёС†Р° СѓРіР»РѕРІ
+    raz = ugol_min - ugol_chas;
+
+    // Р•СЃР»Рё СЂР°Р·РЅРёС†Р° РѕС‚СЂРёС†Р°С‚РµР»СЊРЅР°СЏ
     if (raz < 0) {
         raz = raz + 360;
     }
 
-    // Скорость сближения 5.5 градусов в минуту
-    otvet = raz / 5.5;
+    // Р’С‹С‡ РІСЂ РґРѕ РІСЃС‚СЂ
+    res = raz / 5.5;
 
-    printf("\nРезультат: %.1f минут\n", otvet);
+    printf("\nРџСЂРё РІСЂРµРјРµРЅРё %d:%d\n", h, m);
+    printf("РЎС‚СЂРµР»РєРё СЃРѕРІРїР°РґСѓС‚ С‡РµСЂРµР· %.1f РјРёРЅСѓС‚\n", res);
 
     return 0;
 }
